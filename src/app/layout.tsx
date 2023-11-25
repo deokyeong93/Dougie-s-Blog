@@ -6,6 +6,8 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { headers } from "next/headers"
 import NavigationButton from "@/components/layout/NavigationButton"
+import Svg from "@/components/common/Svg"
+import { IconSet } from "@/constants"
 
 type Props = {
   children: React.ReactNode
@@ -25,9 +27,9 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko">
       <body
-        className={`${inter.className} pt-8 px-8 max-w-[1160px] min-w-[700px] mx-auto bg-black h-screen`}
+        className={`${inter.className} pt-8 px-8 max-w-[1160px] min-w-[700px] mx-auto bg-black h-screen flex flex-col`}
       >
-        <nav className="flex justify-between mx-auto">
+        <nav className="flex justify-between">
           <h1 className="text-xl font-bold">
             <Link href={"/"} className="flex items-center">
               <Image
@@ -62,7 +64,30 @@ export default function RootLayout({ children }: Props) {
             />
           </ul>
         </nav>
-        <main className="pt-4">{children}</main>
+        <main className="pt-4 flex-1">{children}</main>
+        <footer className="flex items-center border-solid border-t-2 border-indigo-600 justify-between text-white py-2">
+          <div>
+            <span>©FE DeokHyeong Heo.</span>
+          </div>
+          <div className="flex space-x-3">
+            <Link href="https://github.com/deokyeong93" target="_blank">
+              <Svg
+                icon={"github"}
+                color="white"
+                size={32}
+                className="hover:fill-gray-400"
+              />
+            </Link>
+            <Link href="https://www.instagram.com/heodeok/" target="_blank">
+              <Svg
+                icon={"instagram"}
+                color="white"
+                size={32}
+                className="hover:fill-gray-400"
+              />
+            </Link>
+          </div>
+        </footer>
       </body>
     </html>
   )

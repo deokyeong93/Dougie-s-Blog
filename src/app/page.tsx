@@ -30,7 +30,7 @@ export default function Home() {
         />
       </div>
       <div className="pt-12">
-        <h2 className="text-xl font-bold bg-indigo-500 bg-opacity-50 inline-block px-1 mb-10 leading-5">
+        <h2 className="text-2xl font-bold px-1 mb-10 leading-5">
           {"🧑‍💻 I've worked at"}
         </h2>
         <ul className="border-t">
@@ -57,6 +57,11 @@ export default function Home() {
             </p>
           </li>
         </ul>
+      </div>
+      <div className="pt-12">
+        <h2 className="text-2xl font-bold px-1 mb-10 leading-5">
+          {"😄 Recommended Post"}
+        </h2>
       </div>
     </>
   )
