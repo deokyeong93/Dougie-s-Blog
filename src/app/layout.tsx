@@ -24,8 +24,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko">
-      <body className={`${inter.className} pt-8 px-24 bg-black h-screen`}>
-        <nav className="flex justify-between">
+      <body
+        className={`${inter.className} pt-8 px-8 max-w-[1160px] min-w-[700px] mx-auto bg-black h-screen`}
+      >
+        <nav className="flex justify-between mx-auto">
           <h1 className="text-xl font-bold">
             <Link href={"/"} className="flex items-center">
               <Image
