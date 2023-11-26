@@ -32,7 +32,7 @@ export default function ContactPage() {
           아래 이메일 전송 폼을 이용해주세요. 🙏
         </p>
       </header>
-      <div className="flex justify-center">
+      <div className="flex flex-col items-center">
         <EmailSendForm />
       </div>
     </section>

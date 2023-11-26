@@ -48,11 +48,6 @@ export default function RootLayout({ children }: Props) {
               className="hover:text-white hover:border-b-2"
             />
             <NavigationButton
-              href={"/about"}
-              text="About"
-              className="hover:text-white hover:border-b-2 border-green-300"
-            />
-            <NavigationButton
               href={"/posts"}
               text="Posts"
               className="hover:text-white hover:border-b-2 border-indigo-600"
