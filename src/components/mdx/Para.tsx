@@ -5,5 +5,5 @@ type Props = {
 }
 
 export default function Para({ children }: Props) {
-  return <p className="text-gray-700 my-4 text-base">{children}</p>
+  return <p className="text-gray-300 my-4 text-base">{children}</p>
 }
