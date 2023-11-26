@@ -3,7 +3,7 @@ import fs from "fs"
 import path from "path"
 import { serialize } from "next-mdx-remote/serialize"
 import PostCard from "@/components/app/posts/PostCard"
-import { MdxMetaData } from "@/components/mdx/MdxContent"
+import { MdxMetaData } from "@/utils/mdx"
 
 export default async function PostsPage() {
   const fileNames = fs.readdirSync("database", "utf8")

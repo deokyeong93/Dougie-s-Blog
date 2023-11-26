@@ -1,8 +1,8 @@
-import { MdxMetaData } from "@/components/mdx/MdxContent"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import PostBadge from "./PostBadge"
+import { MdxMetaData } from "@/utils/mdx"
 
 type Props = {
   mdxMetaData: MdxMetaData

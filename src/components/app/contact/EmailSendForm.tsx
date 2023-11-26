@@ -1,5 +1,6 @@
 "use client"
 
+import Spinner from "@/components/common/Spinner"
 import React, { useState } from "react"
 
 export default function EmailSendForm() {
@@ -27,6 +28,8 @@ export default function EmailSendForm() {
     e.preventDefault()
 
     try {
+      setEmailSendResult({ status: "loading", message: "" })
+
       const response = await fetch("/api/contact", {
         method: "post",
         body: JSON.stringify(form),
@@ -35,7 +38,7 @@ export default function EmailSendForm() {
       if (response.status !== 200) {
         if (response.statusText === "This is not valid Email.") {
           return setEmailSendResult({
-            status: "fail",
+            status: "warn",
             message: "⚠️ 유효하지 않은 이메일 주소 입니다.",
           })
         }
@@ -48,13 +51,20 @@ export default function EmailSendForm() {
     }
   }
 
+  const { message, status } = emailSendResult
+  const isEmailSending = status === "loading"
+
+  const messageBackgroundMap: { [key: string]: string } = {
+    success: "bg-green-400",
+    warn: "bg-orange-500",
+    fail: "bg-red-400",
+  }
+
   return (
     <>
       {emailSendResult.message && (
         <div
-          className={`w-2/6 bg-${
-            emailSendResult.status === "success" ? "green" : "red"
-          }-400 px-4 py-3 mb-4 rounded relative`}
+          className={`w-2/6 ${messageBackgroundMap[status]} px-4 py-3 mb-4 rounded relative`}
         >
           <span className="block sm:inline">{emailSendResult.message}</span>
         </div>
@@ -93,9 +103,14 @@ export default function EmailSendForm() {
         <div>
           <button
             type="submit"
-            className="w-full py-2 rounded-md bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 focus:outline-none"
+            disabled={status === "loading"}
+            className={`w-full py-2 rounded-md ${
+              isEmailSending
+                ? "bg-emerald-700 hover:bg-emerald-700"
+                : "bg-emerald-400 hover:bg-emerald-600"
+            } focus:outline-none`}
           >
-            이메일 보내기
+            {isEmailSending ? <Spinner /> : "이메일 보내기"}
           </button>
         </div>
       </form>

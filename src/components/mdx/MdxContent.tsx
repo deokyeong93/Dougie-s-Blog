@@ -7,16 +7,7 @@ import { MDXComponents } from "mdx/types"
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import Code from "./Code"
 import PostBadge from "../app/posts/PostBadge"
-
-export type MdxMetaData = {
-  author: string
-  title: string
-  slug: string
-  topics: string[]
-  description: string
-  createdAt: string
-  thumnail: string
-}
+import { MdxMetaData } from "@/utils/mdx"
 
 export type MdxSource = MDXRemoteSerializeResult<
   Record<string, unknown>,
@@ -24,7 +15,7 @@ export type MdxSource = MDXRemoteSerializeResult<
 >
 
 type LayoutProps = {
-  source: MdxSource
+  source?: MdxSource
 }
 
 export default function MdxContent({ source, ...props }: LayoutProps) {
@@ -33,6 +24,14 @@ export default function MdxContent({ source, ...props }: LayoutProps) {
     h2: H2,
     p: Para,
     code: Code,
+  }
+
+  if (!source) {
+    return (
+      <>
+        <span>데이터 불러오기 실패</span>
+      </>
+    )
   }
 
   return (
