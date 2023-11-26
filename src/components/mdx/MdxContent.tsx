@@ -7,14 +7,19 @@ import { MDXComponents } from "mdx/types"
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import Code from "./Code"
 
+export type MdxMetaData = {
+  author: string
+  title: string
+  slug: string
+  topics: string[]
+  description: string
+  createdAt: string
+  thumnail: string
+}
+
 export type MdxSource = MDXRemoteSerializeResult<
   Record<string, unknown>,
-  {
-    author: string
-    title: string
-    slug: string
-    topics: string[]
-  }
+  MdxMetaData
 >
 
 type LayoutProps = {

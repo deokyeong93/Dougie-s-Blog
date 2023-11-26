@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko">
       <body
-        className={`${inter.className} pt-8 px-8 max-w-[1160px] min-w-[700px] mx-auto bg-black h-screen flex flex-col`}
+        className={`${inter.className} pt-8 px-20 max-w-[1160px] min-w-[700px] mx-auto bg-black h-screen flex flex-col`}
       >
         <nav className="flex justify-between">
           <h1 className="text-xl font-bold">
@@ -64,7 +64,7 @@ export default function RootLayout({ children }: Props) {
             />
           </ul>
         </nav>
-        <main className="pt-4 flex-1">{children}</main>
+        <main className="pt-4 pb-56 flex-1">{children}</main>
         <footer className="flex items-center border-solid border-t-2 border-indigo-600 justify-between text-white py-2">
           <div>
             <span>©FE DeokHyeong Heo.</span>
