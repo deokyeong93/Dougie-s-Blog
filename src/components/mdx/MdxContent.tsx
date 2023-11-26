@@ -6,6 +6,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXComponents } from "mdx/types"
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import Code from "./Code"
+import PostBadge from "../app/posts/PostBadge"
 
 export type MdxMetaData = {
   author: string
@@ -43,13 +44,8 @@ export default function MdxContent({ source, ...props }: LayoutProps) {
             By {source.frontmatter.author}
           </p>
           <div className="flex flex-wrap gap-2 mt-4">
-            {source.frontmatter.topics.map((topic) => (
-              <span
-                key={topic}
-                className="text-sm text-black bg-gray-200 rounded-full px-2 py-1"
-              >
-                {topic.slice(0, 1).toUpperCase() + topic.slice(1)}
-              </span>
+            {source.frontmatter.topics.map((topic, index) => (
+              <PostBadge key={index} topic={topic} />
             ))}
           </div>
         </div>

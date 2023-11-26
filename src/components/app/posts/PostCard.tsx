@@ -2,18 +2,25 @@ import { MdxMetaData } from "@/components/mdx/MdxContent"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
+import PostBadge from "./PostBadge"
 
 type Props = {
   mdxMetaData: MdxMetaData
 }
 
 export default function PostCard({ mdxMetaData, ...props }: Props) {
+  console.log(mdxMetaData)
   return (
     <Link
       className="grid grid-cols-12 py-4 border-b-2 border-gray-400 group"
       href={`/posts/detail/${mdxMetaData.slug}`}
     >
       <div className="col-span-9 grid grid-rows-4">
+        <div className="self-center space-x-2">
+          {mdxMetaData.topics.map((topic, index) => (
+            <PostBadge key={index} topic={topic} />
+          ))}
+        </div>
         <h1 className="text-2xl mb-2 row-span-1 group-hover:text-indigo-600">
           {mdxMetaData.title}
         </h1>
