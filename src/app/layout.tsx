@@ -64,7 +64,7 @@ export default function RootLayout({ children }: Props) {
             />
           </ul>
         </nav>
-        <main className="pt-4 pb-56 flex-1">{children}</main>
+        <main className="pt-4 pb-32 flex-1">{children}</main>
         <footer className="flex items-center border-solid border-t-2 border-indigo-600 justify-between text-white py-2">
           <div>
             <span>©FE DeokHyeong Heo.</span>
