@@ -1,5 +1,4 @@
 import { sendEmail } from "@/utils/email"
-import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
   const body: {
