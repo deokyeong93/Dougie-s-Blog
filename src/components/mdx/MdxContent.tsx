@@ -1,7 +1,5 @@
 "use client"
 
-import { H1, H2 } from "@/components/mdx/Heading"
-import Para from "@/components/mdx/Para"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXComponents } from "mdx/types"
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
@@ -19,13 +17,6 @@ type LayoutProps = {
 }
 
 export default function MdxContent({ source, ...props }: LayoutProps) {
-  const components = {
-    h1: H1,
-    h2: H2,
-    p: Para,
-    code: Code,
-  }
-
   if (!source) {
     return (
       <>
@@ -35,7 +26,7 @@ export default function MdxContent({ source, ...props }: LayoutProps) {
   }
 
   return (
-    <MDXProvider>
+    <>
       <div className="w-[80%] mx-auto p-6">
         <div className="flex flex-col mt-6 mb-10 items-center justify-center text-center">
           <h1 className="text-3xl font-bold">{source.frontmatter.title}</h1>
@@ -49,10 +40,12 @@ export default function MdxContent({ source, ...props }: LayoutProps) {
           </div>
         </div>
       </div>
-      <MDXRemote
-        components={components as Readonly<MDXComponents>}
-        {...source}
-      />
-    </MDXProvider>
+      <div className="prose prose-invert max-w-none">
+        <MDXRemote
+          {...source}
+          components={{ code: Code } as Readonly<MDXComponents>}
+        />
+      </div>
+    </>
   )
 }
