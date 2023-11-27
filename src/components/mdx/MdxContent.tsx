@@ -1,6 +1,5 @@
 "use client"
 
-import { MDXProvider } from "@mdx-js/react"
 import { MDXComponents } from "mdx/types"
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import Code from "./Code"
