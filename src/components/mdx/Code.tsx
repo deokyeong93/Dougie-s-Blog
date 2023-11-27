@@ -12,7 +12,9 @@ export default function Code({ className, children, ...props }: Props) {
 
   return match ? (
     <>
-      <p className="bg-[#1d1f21] p-2 border-slate-400 border-b-2">{match[1]}</p>
+      <p className="bg-[#1d1f21] p-2 border-slate-400 border-b-2 mb-0">
+        {match[1]}
+      </p>
       <SyntaxHighlighter
         customStyle={{
           marginTop: 0,
