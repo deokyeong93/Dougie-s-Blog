@@ -23,6 +23,12 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 0.5,
+  maximumScale: 1,
+}
+
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko">
