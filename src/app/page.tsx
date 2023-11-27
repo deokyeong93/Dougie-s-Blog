@@ -1,7 +1,25 @@
+import Career from "@/components/app/home/Career"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
+  const careerMap = {
+    barogo: {
+      name: "바로고",
+      url: "https://www.barogo.com/",
+      role: "Web Frontend",
+      period: "2022.04 - 2023.07",
+      hoverColor: "hover:text-orange-600",
+    },
+    ims: {
+      name: "아이엠에스모빌리티",
+      url: "https://imsmobility.co.kr/",
+      role: "Web Frontend",
+      period: "2021.01 - 2022.04",
+      hoverColor: "hover:text-neutral-600",
+    },
+  }
+
   return (
     <>
       <div className="grid gap-6 grid-cols-[3fr_2fr] items-center">
@@ -29,35 +47,7 @@ export default function Home() {
           alt={"마리오"}
         />
       </div>
-      <div className="pt-12">
-        <h2 className="text-2xl font-bold px-1 mb-10 leading-5">
-          {"🧑‍💻 I've worked at"}
-        </h2>
-        <ul className="border-t">
-          <li className="py-6 px-4 flex items-center border-b">
-            <h3 className="text-base md:text-lg font-bold whitespace-nowrap w-2/5 md:w-40 hover:text-orange-600">
-              <Link href={"https://www.barogo.com/"}>바로고</Link>
-            </h3>
-            <p className="text-gray-300 text-xs md:text-sm leading-2 ml-0 md:ml-4 whitespace-normal md:whitespace-nowrap overflow-hidden w-3/5">
-              <span>Web Frontend</span>
-              <span className="px-1">|</span>
-              <span>2022.04 - 2023.07</span>
-            </p>
-          </li>
-          <li className="py-6 px-4 flex items-center border-b">
-            <h3 className="text-base md:text-lg font-bold whitespace-nowrap w-2/5 md:w-40 hover:text-neutral-500">
-              <Link href={"https://imsmobility.co.kr/"}>
-                아이엠에스모빌리티
-              </Link>
-            </h3>
-            <p className="text-gray-300 text-xs md:text-sm leading-2 ml-0 md:ml-4 whitespace-normal md:whitespace-nowrap overflow-hidden w-3/5">
-              <span>Web Frontend</span>
-              <span className="px-1">|</span>
-              <span>2021.01 - 2022.04</span>
-            </p>
-          </li>
-        </ul>
-      </div>
+      <Career careerMap={careerMap} />
     </>
   )
 }

@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Props) {
         className={`${inter.className} pt-8 px-20 max-w-[1160px] min-w-[700px] mx-auto bg-black h-screen flex flex-col`}
       >
         <Header />
-        <main className="pt-4 pb-32 flex-1">{children}</main>
+        <main className="grow pt-4 pb-32">{children}</main>
         <Footer />
       </body>
     </html>
