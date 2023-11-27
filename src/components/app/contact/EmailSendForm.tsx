@@ -18,10 +18,7 @@ export default function EmailSendForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { value, name } = e.target
-    setForm({
-      ...form,
-      [name]: value,
-    })
+    setForm((prev) => ({ ...prev, [name]: value }))
   }
 
   const onSubmitEmailForm = async (e: React.FormEvent) => {
@@ -62,11 +59,11 @@ export default function EmailSendForm() {
 
   return (
     <>
-      {emailSendResult.message && (
+      {message && (
         <div
           className={`w-2/6 ${messageBackgroundMap[status]} px-4 py-3 mb-4 rounded relative`}
         >
-          <span className="block sm:inline">{emailSendResult.message}</span>
+          <span className="block sm:inline">{message}</span>
         </div>
       )}
       <form
