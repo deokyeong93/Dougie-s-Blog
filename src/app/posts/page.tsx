@@ -1,21 +1,9 @@
 import React from "react"
-import fs from "fs"
-import path from "path"
-import { serialize } from "next-mdx-remote/serialize"
 import PostCard from "@/components/app/posts/PostCard"
-import { MdxMetaData } from "@/utils/mdx"
+import { getMdxSources } from "@/utils/mdx"
 
 export default async function PostsPage() {
-  const fileNames = fs.readdirSync("database", "utf8")
-
-  const readyToParseSources = fileNames
-    .map((source) => fs.readFileSync(path.join("database", source), "utf8"))
-    .map((file) => serialize(file, { parseFrontmatter: true }))
-
-  const mdxSources = await Promise.all(readyToParseSources)
-  const postMdxMetaDatas = mdxSources.map(
-    (source) => source.frontmatter
-  ) as MdxMetaData[]
+  const mdxSources = await getMdxSources()
 
   return (
     <section>
@@ -27,11 +15,8 @@ export default async function PostsPage() {
         </p>
       </header>
       <div>
-        {postMdxMetaDatas.map((postMdxMetaData, idx) => (
-          <PostCard
-            key={`${postMdxMetaData.slug}_${idx}`}
-            mdxMetaData={postMdxMetaData}
-          />
+        {mdxSources.map(({ frontmatter: metaData }, idx) => (
+          <PostCard key={`${metaData.slug}_${idx}`} mdxMetaData={metaData} />
         ))}
       </div>
     </section>

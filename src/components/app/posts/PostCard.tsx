@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function PostCard({ mdxMetaData, ...props }: Props) {
-  console.log(mdxMetaData)
   return (
     <Link
       className="grid grid-cols-12 py-4 border-b-2 border-gray-400 group"
