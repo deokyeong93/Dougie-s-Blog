@@ -1,6 +1,5 @@
-import MdxContent, { MdxSource } from "@/components/mdx/MdxContent"
+import MdxContent from "@/components/mdx/MdxContent"
 import { getMdxSource, getMdxSources } from "@/utils/mdx"
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 
 type Props = {
   params: {
@@ -41,5 +40,9 @@ export async function generateMetadata({ params }: Props) {
 export default async function PostDetailPage({ params }: Props) {
   const mdxSource = await getMdxSource(params.slug)
 
-  return <MdxContent source={mdxSource} />
+  return (
+    <>
+      <MdxContent source={mdxSource} />
+    </>
+  )
 }
