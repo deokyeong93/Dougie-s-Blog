@@ -5,6 +5,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import Code from "./Code"
 import PostBadge from "../app/posts/PostBadge"
 import { MdxMetaData } from "@/utils/mdx"
+import Comments from "../common/Comments"
 
 export type MdxSource = MDXRemoteSerializeResult<
   Record<string, unknown>,
@@ -39,12 +40,13 @@ export default function MdxContent({ source, ...props }: LayoutProps) {
           </div>
         </div>
       </div>
-      <div className="prose prose-invert max-w-none">
+      <div className="prose prose-invert max-w-none pb-8">
         <MDXRemote
           {...source}
           components={{ code: Code } as Readonly<MDXComponents>}
         />
       </div>
+      <Comments theme="github-dark" repo="deokyeong93/Dougie-s-Blog" />
     </>
   )
 }
