@@ -11,7 +11,10 @@ type Props = {
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "허덕형의 개발 블로그",
+  title: {
+    default: "허덕형의 개발 블로그",
+    template: "허덕형의 개발 블로그 | %s",
+  },
   description: "허덕형의 개발 블로그입니다.",
   icons: {
     icon: "/images/favicon.png",
